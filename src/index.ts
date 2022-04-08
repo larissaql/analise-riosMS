@@ -8,7 +8,6 @@ let month = String(date.getMonth() + 1)
 let year = date.getFullYear()
 
 let presentDate = `${year}/${month}/${day}`
-
 let dateLessSeven = new Date(presentDate)
 dateLessSeven.setDate(dateLessSeven.getDate() - 7)
 
@@ -51,21 +50,26 @@ const getRiverReadingList = async (
       finalDate
     )
 
-    riverReadingList.push(readings)
+  riverReadingList.push(readings)
   }
 
   return riverReadingList.flat()
+
 }
       const generateRiverDataFiles = async (
           readings: RiverReading[]
+
     ) => {
+
       saveToCsvFile(readings, 'leituras.csv')
       console.log('Planilha gerada!')
+
     }
 
-    const worksheet = async () => {
-      let readings = await getRiverReadingList(riverNames, new Date(dateLessSeven), new Date(presentDate))
-      generateRiverDataFiles(readings)
+      const worksheet = async () => {
+        let readings = await getRiverReadingList(riverNames, new Date(dateLessSeven), new Date(presentDate))
+        generateRiverDataFiles(readings)
+
   }
 
   worksheet()
